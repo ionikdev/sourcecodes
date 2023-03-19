@@ -1,36 +1,128 @@
-* {
-  margin: 0;
+*,
+*:before,
+*:after {
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
+  background: black;
+  z-index: -1;
+}
+label {
+  display: block;
+  height: 20px;
+  width: 20px;
+  background-color: white;
+  position: absolute;
+  margin: 120px auto 0 auto;
+  left: 0;
+  right: 0;
+  border-radius: 50%;
+  animation: spin 0.5s infinite linear;
+}
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+label:after {
+  content: "";
+  position: absolute;
+  height: 70px;
+  width: 70px;
+  background-color: #005fe4;
+  border: 10px solid white;
+  border-radius: 50%;
+  left: -25px;
+  bottom: -25px;
+}
+label span {
+  display: block;
+  height: 120px;
+  width: 70px;
+  background-color: white;
+  border-radius: 55% 45% 100% 0% / 39% 28% 72% 61%;
+  position: absolute;
+  z-index: -1;
+}
+span:nth-child(1) {
+  bottom: 10px;
+  left: 10px;
+}
+span:nth-child(2) {
+  transform: rotate(-120deg);
+  left: -95px;
+  top: -50px;
+}
+span:nth-child(3) {
+  transform: rotate(-240deg);
+  right: -60px;
+  top: 10px;
 }
 
-.container {
-  height: 100vh;
-  widows: 100%;
-  background: #ebeef1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.base {
+  height: 300px;
+  width: 20px;
+  background-color: #00317e;
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  top: 140px;
+  z-index: -2;
 }
-
-button {
-  font-size: 32px;
-  font-weight: 500;
-  padding: 20px;
-  margin: 30px;
-  width: 350px;
-  background: #ebeef1;
-  cursor: pointer;
-  border: none;
-  border-radius: 50px;
-  color: #00a037;
-  box-shadow: 10px 10px 10px -1px rgb(10, 99, 169, 0.16),
-    -10px -10px 10px -1px rgb(255, 255, 255, 0.7);
+.base:after {
+  content: "";
+  position: absolute;
+  height: 50px;
+  width: 250px;
+  background-color: rgb(20, 73, 94);
+  left: -105px;
+  top: 300px;
+  border-radius: 20px 20px 0 0;
 }
-
-button.reject {
-  color: #ed0000;
-  box-shadow: inset 10px 10px 10px -1px rgb(10, 99, 169, 0.16),
-    inset -10px -10px 10px -1px rgb(255, 255, 255, 0.7);
+input[type="checkbox"] {
+  position: absolute;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 80px;
+  width: 40px;
+  background-color: wheat;
+  position: absolute;
+  top: 250px;
+  left: 400px;
+  outline: none;
+  border-radius: 5px 5px 0 0;
+}
+.on {
+  font-size: 10px;
+  color: rgb(43, 89, 175);
+  position: absolute;
+  top: 260px;
+  text-decoration: none;
+  left: 410px;
+  border-bottom: #008bfd;
+  border: 1px;
+  background: none;
+}
+.off {
+  font-size: 10px;
+  color: rgb(43, 175, 175);
+  position: absolute;
+  top: 310px;
+  text-decoration: none;
+  left: 410px;
+  border-bottom: #008bfd;
+  border: 1px;
+  background: none;
+}
+input[type="checkbox"] :checked {
+  height: 8px;
+}
+input[type="checkbox"]:checked + label {
+  /* Play the animation when the checkbox is checked */
+  animation-play-state: running;
+}
+input[type="checkbox"]:not(:checked) + label {
+  /* Pause the animation when the checkbox is not checked */
+  animation-play-state: paused;
 }
